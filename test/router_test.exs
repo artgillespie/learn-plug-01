@@ -27,4 +27,19 @@ defmodule Plug01.RouterTest do
     assert conn.status == 200
     assert conn.resp_body == "Hello, Static File!\n"
   end
+
+  test "path parms" do
+    conn = conn(:get, "/user/jenn")
+    conn = Plug01.Router.call(conn, @opts)
+    assert conn.state == :sent
+    assert conn.status == 200
+    assert conn.resp_body == "Hello, jenn!"
+  end
+
+  test "httpclient" do
+    conn = conn(:get, "/httpclient")
+    conn = Plug01.Router.call(conn, @opts)
+    assert conn.state == :sent
+    assert conn.status == 200
+  end
 end

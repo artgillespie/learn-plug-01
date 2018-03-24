@@ -14,8 +14,9 @@ defmodule Plug01.MixProject do
   # Run "mix help compile.app" to learn about applications.
   def application do
     [
+      mod: {Plug01.Application, []},
       extra_applications: [:logger],
-      applications: [:cowboy, :plug]
+      applications: [:cowboy, :plug, :httpoison]
     ]
   end
 
@@ -23,7 +24,8 @@ defmodule Plug01.MixProject do
   defp deps do
     [
       {:cowboy, "~> 1.0.0"},
-      {:plug, "~> 1.4"}
+      {:plug, "~> 1.4"},
+      {:httpoison, "~> 1.0"}
     ]
   end
 end
